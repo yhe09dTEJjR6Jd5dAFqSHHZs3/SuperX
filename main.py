@@ -57,14 +57,14 @@ class XAutoPoster(tk.Tk):
         self.listbox_media.pack(fill="x", padx=4, pady=4)
         btn_frame_media = tk.Frame(frame_media, bg="#0f172a")
         btn_frame_media.pack(fill="x", padx=2, pady=4)
-        tk.Button(btn_frame_media, text="添加媒体", command=self.add_media, bg="#10b981", fg="#0f172a", activebackground="#059669", activeforeground="white").pack(side="left", padx=3)
+        tk.Button(btn_frame_media, text="浏览", command=self.add_media, bg="#10b981", fg="#0f172a", activebackground="#059669", activeforeground="white").pack(side="left", padx=3)
         tk.Button(btn_frame_media, text="清空媒体", command=self.clear_media, bg="#f59e0b", fg="#0f172a", activebackground="#d97706", activeforeground="white").pack(side="left", padx=3)
         footer = tk.Frame(self, bg="#0f172a")
         footer.pack(fill="x", pady=10)
         self.status_var = tk.StringVar(value="准备就绪：请选择 FirefoxPortable.exe 并填写内容。")
         status_label = tk.Label(footer, textvariable=self.status_var, fg="#cbd5f5", bg="#0f172a")
         status_label.pack(fill="x", padx=16, pady=(0, 6))
-        self.btn_send = tk.Button(footer, text="发送", command=self.start_posting, height=2, bg="#22c55e", fg="#0f172a", activebackground="#16a34a", activeforeground="white", font=("Microsoft YaHei", 13, "bold"))
+        self.btn_send = tk.Button(footer, text="发布", command=self.start_posting, height=2, bg="#22c55e", fg="#0f172a", activebackground="#16a34a", activeforeground="white", font=("Microsoft YaHei", 13, "bold"))
         self.btn_send.pack(fill="x", padx=16, pady=(0, 8))
 
     def add_exe(self):
@@ -130,8 +130,8 @@ class XAutoPoster(tk.Tk):
         if not text and not self.media_paths:
             messagebox.showerror("错误", "文字与媒体不能同时为空，请填写发帖内容或添加媒体。")
             return
-        self.btn_send.config(state=tk.DISABLED, text="发送中...")
-        self.status_var.set("发送中：正在打开浏览器并准备发布...")
+        self.btn_send.config(state=tk.DISABLED, text="发布中...")
+        self.status_var.set("发布中：正在打开浏览器并准备发布...")
         threading.Thread(target=self.run_automation, args=(text,), daemon=True).start()
 
     def run_automation(self, text):
@@ -173,7 +173,7 @@ class XAutoPoster(tk.Tk):
                     driver.quit()
                 except:
                     pass
-            self.after(0, lambda: self.btn_send.config(state=tk.NORMAL, text="发送"))
+            self.after(0, lambda: self.btn_send.config(state=tk.NORMAL, text="发布"))
 
 if __name__ == "__main__":
     app = XAutoPoster()
