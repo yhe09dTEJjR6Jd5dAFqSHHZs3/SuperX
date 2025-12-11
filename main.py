@@ -24,10 +24,10 @@ class XAutoPoster(tk.Tk):
         self.geometry(f"{initial_width}x{initial_height}")
         self.resizable(True, True)
         base_font_size = max(1, int(self.base_unit * self.golden_ratio * 4))
-        button_font_size = max(1, int(base_font_size / self.golden_ratio))
+        self.button_font_size = max(1, int(base_font_size / self.golden_ratio))
         self.configure(bg="#0f172a")
         self.option_add("*Font", ("Microsoft YaHei", base_font_size))
-        self.option_add("*Button.Font", ("Microsoft YaHei", button_font_size, "bold"))
+        self.option_add("*Button.Font", ("Microsoft YaHei", self.button_font_size, "bold"))
         self.exe_paths = []
         self.media_paths = []
         self.desktop_aaa = os.path.join(os.path.expanduser("~"), "Desktop", "AAA")
@@ -81,7 +81,7 @@ class XAutoPoster(tk.Tk):
         status_label = tk.Label(footer, textvariable=self.status_var, fg="#cbd5f5", bg="#0f172a")
         status_label.pack(fill="x", padx=max(1, int(self.base_unit * self.golden_ratio * 1.2)), pady=(0, self.base_unit))
         send_height = max(1, int(self.base_unit * self.golden_ratio))
-        send_font = max(1, int(button_font_size * self.golden_ratio))
+        send_font = max(1, int(self.button_font_size * self.golden_ratio))
         self.btn_send = tk.Button(footer, text="发布", command=self.start_posting, height=send_height, bg="#22c55e", fg="white", activebackground="#16a34a", activeforeground="white", font=("Microsoft YaHei", send_font, "bold"), relief=tk.RAISED, bd=2)
         self.btn_send.pack(fill="x", padx=max(1, int(self.base_unit * self.golden_ratio * 1.2)), pady=(0, self.base_unit))
 
