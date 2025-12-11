@@ -21,7 +21,7 @@ class XAutoPoster(tk.Tk):
         self.screen_height = self.winfo_screenheight()
         self.unity = int(round(math.pi / math.pi))
         self.zero = self.unity - self.unity
-        self.golden_ratio = math.phi
+        self.golden_ratio = (math.sqrt(self.unity + self.unity + self.unity + self.unity + self.unity) + self.unity) / (self.unity + self.unity)
         self.natural_base = math.e
         self.media_limit = int(math.floor(math.tau - self.golden_ratio))
         self.half_ratio = math.pi / math.tau
